@@ -217,8 +217,8 @@ export default [
     name: "portfolio",
     language: ["react", "css", "aos", "framer-motion"],
     category: "react",
-    url: "https://portfoliodoc.netlify.app/",
-    Github: "https://github.com/oyekanm/Portfolio",
+    url: "https://github.com/oyekanm/Project-House",
+    Github: "https://github.com/oyekanm/Project-House",
   },
   {
     id: 23,

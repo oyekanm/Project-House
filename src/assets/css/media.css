@@ -2,6 +2,9 @@
   html {
     font-size: 50%;
   }
+  .navbar {
+    height: 50vh;
+  }
   .Projects {
     grid-template-columns: repeat(auto-fit, 100%);
   }

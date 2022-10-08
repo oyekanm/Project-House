@@ -124,7 +124,7 @@ export default [
     id: 13,
     author: "Oyekanmi",
     image: "https://i.ibb.co/myTQb90/Screenshot-30.png",
-    name: "carousel",
+    name: "cart",
     language: ["react", "css", "context-api"],
     category: "react",
     url: "http://cart-navy.vercel.app/",

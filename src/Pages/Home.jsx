@@ -87,9 +87,9 @@ function Home() {
         </div>
       </div>
       <div className="Mail">
-        <Link to="mailto:enitanboluwatife5@gmail.com" className="Mail__message">
+        <a href="mailto:enitanboluwatife5@gmail.com" className="Mail__message">
           let's work
-        </Link>
+        </a>
       </div>
 
       <p className="Projects__title">projects</p>

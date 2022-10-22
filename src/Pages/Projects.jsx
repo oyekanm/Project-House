@@ -26,11 +26,13 @@ function Projects() {
 
   return (
     <section className="container">
-      {categories.map((category, index) => {
-        return (
-          <Category key={index} category={category} filterBtn={filterBtn} />
-        );
-      })}
+      <div className="categories">
+        {categories.map((category, index) => {
+          return (
+            <Category key={index} category={category} filterBtn={filterBtn} />
+          );
+        })}
+      </div>
       <div className="Projects">
         {project.map((project) => {
           const { id, author, image, name, language, url, Github } = project;

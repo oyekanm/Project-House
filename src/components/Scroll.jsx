@@ -1,6 +1,8 @@
 import React from "react";
 
 function Scroll({ scroll }) {
+
+  
   const scrollUp = () => {
     window.scrollTo(0, 0);
   };

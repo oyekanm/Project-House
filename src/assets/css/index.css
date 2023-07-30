@@ -1,0 +1,448 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.8);
+}
+a {
+  list-style: none;
+  text-decoration: none;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.Nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rem;
+  transition: all 1s;
+}
+
+.Nav__name,
+.Nav__name:active,
+.Nav__name:link,
+.Nav__name:visited,
+.Nav__name:hover {
+  font-size: 3.5rem;
+  font-weight: 600;
+  position: fixed;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.8);
+  top: 3rem;
+  z-index: 100;
+}
+.Navigation {
+  cursor: pointer;
+  position: fixed;
+  top: 3rem;
+  right: 5rem;
+  z-index: 5000;
+  transition: all 0.2s;
+}
+.show {
+  transform: rotate(90deg);
+}
+.Nav__button {
+  /* position: relative; */
+  width: 3rem;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem auto;
+  transition: all 0.3s ease-in-out;
+}
+.Nav__button:nth-child(2) {
+  width: 2rem;
+  margin: 0.5rem 0;
+  text-align: right;
+}
+
+.Navigation.show .Nav__button:nth-child(1) {
+  transform: rotate(45deg);
+  width: 2.5rem;
+}
+.Navigation.show .Nav__button:nth-child(2) {
+  transform: translate(-8px);
+}
+.Navigation.show .Nav__button:nth-child(3) {
+  transform: rotate(-45deg);
+  width: 2.5rem;
+}
+.Nav__link,
+.Nav__link:active,
+.Nav__link:link,
+.Nav__link:visited,
+.Nav__link:hover {
+  font-size: 4rem;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: 3px;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar {
+  visibility: hidden;
+  z-index: 1000;
+  width: 100%;
+  padding-top: 10%;
+  height: 70vh;
+  position: fixed;
+  bottom: -400px;
+  left: 0;
+  transition: all 0.6s;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.activ {
+  visibility: visible;
+  bottom: -0px;
+  backdrop-filter: blur(5px);
+}
+.Nav__item {
+  list-style: none;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.Header {
+  margin-block: 5rem;
+}
+.Header__hello {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 3px;
+}
+.Header__name {
+  font-size: 4rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 80px;
+}
+.Header__desc {
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 50px;
+}
+.Header__text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.Header__about {
+  margin-block: 3rem;
+}
+.Header__info {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 40px;
+  width: 700px;
+  max-width: 100%;
+}
+.Mail {
+  margin-block: 3rem;
+}
+.Mail__message,
+.Mail__message:link,
+.Mail__message:active,
+.Mail__message:visited {
+  position: relative;
+  color: gray;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.Mail__message::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 50%;
+  height: 2px;
+  background-color: gray;
+  margin: 5px auto 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 4rem;
+  margin-block: 5rem;
+}
+.Projects__title {
+  font-size: 5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.8);
+}
+.Project__summary {
+  position: relative;
+  box-shadow: 0 0 10px 4px rgba(225, 225, 225, 0.5);
+  border-radius: 7px;
+  overflow: hidden;
+  height: 260px;
+}
+.Project__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+}
+.Project__info {
+  position: absolute;
+  top: 75%;
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+}
+.Project__name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.Project__language {
+  margin-block: 1rem;
+}
+.Project__skills {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  background-color: rgb(31 41 55);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.2rem 0.5rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+}
+.Project__modal {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem;
+  position: absolute;
+  top: 100%;
+  transition: all 0.5s;
+}
+.Project__author {
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+}
+.Project__summary:hover .Project__modal {
+  top: 0;
+}
+.Projects__link {
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10rem 0 0 3rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+.Skills {
+  width: 700px;
+  max-width: 100%;
+}
+.Skills__title {
+  font-size: 4rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 50px;
+}
+.Skills__text {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 40px;
+}
+.Skills__grid {
+  margin: 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  gap: 2rem;
+}
+.Skills__tech {
+  padding: 1rem 1.4rem;
+  border: 4px solid rgb(67, 129, 126);
+  background: rgba(162, 165, 214, 0.082);
+  font-size: 1.8rem;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(225, 225, 225, 0.3);
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+.Scroll {
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: none;
+}
+.footer {
+  padding: 2rem 0;
+  margin-top: 5rem;
+}
+.footer__socials {
+  display: flex;
+  gap: 2rem;
+}
+.footer__link,
+.footer__link:link,
+.footer__link:hover,
+.footer__link:active,
+.footer__link:visited {
+  border-left: 3px solid rgb(67, 129, 126);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 2rem;
+  transition: all 0.3s;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+.footer__link:hover {
+  border-right: 3px solid rgb(67, 129, 126);
+  background: rgba(162, 165, 214, 0.082);
+  box-shadow: 0 0 7px rgba(225, 225, 225, 0.3);
+  border-radius: 8px;
+}
+.footer__flex {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+.footer__name {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.whatsapp__link {
+  background-color: #fff;
+  position: fixed;
+  right: 0;
+  top: 20%;
+  padding: 1rem;
+  border-radius: 50%;
+}
+.no-display {
+  display: none;
+}
+.filter-btn {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  padding: 0.8rem;
+  color: #000;
+  background-color: #fff;
+  margin: 1rem 0.5rem 0 0;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.filter-btn:hover {
+  color: #fff;
+  background-color: #000;
+  box-shadow: 0 0 7px rgba(225, 225, 225, 0.6);
+}
+/* Dashboard */
+
+.Outlet{
+  padding: 1.5rem 0;
+}
+.Dashboard{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 120vh;
+}
+/* .Dashboard__nav{
+
+} */
+.Dashboard__item{
+  list-style:none;
+  margin: 1.5rem 0;
+}
+.Dashboard__form--group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.Dashboard__label{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+.Dashboard__input{
+  padding: 1rem;
+  font-size: 1.8rem;
+  border-radius: 10px;
+}
+.Dashboard__input:focus-visible {
+  outline: none;
+}
+.Dashboard__link,
+.Dashboard__link:active,
+.Dashboard__link:link,
+.Dashboard__link:visited,
+.Dashboard__link:hover {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color:rgba(255, 255, 255, 0.8) ;
+  letter-spacing: 3px;
+}
+.Dashboard__submit{
+  padding: 10px 20px;
+  font-size: 2rem;
+  border-radius: 10px;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+.Dashboard__Image{
+height: 200px;
+width: 200px;
+}
+.Dashboard__atten{
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* LOGIN */
+.Login__container{
+  height: 60vh;
+}
+.Login__Form{
+  max-width: 600px;
+  width: 80%;
+  margin: 20% auto 0;
+  
+}
+select:checked{
+  color: blue;
+}

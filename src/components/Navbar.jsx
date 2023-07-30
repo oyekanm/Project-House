@@ -9,17 +9,7 @@ function Navbar() {
   const session = sessionStorage.getItem("key")
   const navigate = useNavigate()
   const user = useQuery(GET_User,{variables: { key:session },})
-  // console.log(user);
-
-  // useEffect(()=>{
-  //   if(session){
-  //     if(!user?.data?.getUser._id){
-  //       // console.log();
-  //       return navigate("/")
-  //     }
-  //   }
-    
-  // },[session])
+ 
 
   return (
     <nav className="Nav container">

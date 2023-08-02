@@ -41,7 +41,7 @@ function Projects() {
       setProject(newfilt);
     }
   };
-
+ 
   return (
     <section className="container">
       <div className="categories">

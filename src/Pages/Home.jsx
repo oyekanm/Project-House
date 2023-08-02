@@ -5,11 +5,23 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
+import GetProject from "../libs/Queries/GetProject";
 
 const languages = Data.map((item) => item.language);
 
 function Home() {
-  const [project, setProject] = useState(Data.slice(17, 22));
+  const projects = GetProject()
+  const data = projects?.data?.getAllProject
+  const [project, setProject] = useState([]);
+
+  useEffect(() => {
+    AOS.init();
+    if(data){
+      setProject(data.slice(0,5))
+      console.log(data)
+    }
+  }, [data]);
+  // const [project, setProject] = useState(Data.slice(17, 22));
   const [language] = useState(languages);
   const [newSet, setNewSet] = useState([]);
 
@@ -94,11 +106,11 @@ function Home() {
 
       <p className="Projects__title">projects</p>
       <div className="Projects">
-        {project.map((project) => {
-          const { id, author, image, name, language, url, Github } = project;
+      {project && project.map((project) => {
+          const { _id, author, image, name, language, url, github } = project;
           return (
             <div
-              key={id}
+              key={_id}
               className="Project__summary"
               data-aos="zoom-in"
               data-aos-duration="2000"
@@ -107,10 +119,10 @@ function Home() {
               <div className="Project__info">
                 <p className="Project__name">{name}</p>
                 <div className="Project__language">
-                  {language.map((skill, index) => {
+                  {language && language.map((skill, index) => {
                     return (
                       <span key={index} className="Project__skills">
-                        {skill}
+                        {skill.name}
                       </span>
                     );
                   })}
@@ -143,7 +155,7 @@ function Home() {
                     <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                   </svg>
                 </a>
-                <a href={Github} target="_blank" rel="noreferrer">
+                <a href={github} target="_blank" rel="noreferrer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30"

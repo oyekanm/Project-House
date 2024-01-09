@@ -11,6 +11,8 @@ import Language from "./Pages/Language";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 
+
+
 function App() {
   const [scroll, setScroll] = useState(false);
 

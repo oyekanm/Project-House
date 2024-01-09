@@ -19,7 +19,7 @@ const GET_PROJECT = gql`
   }
 `;
 export default function GetLanguage() {
-  const data = useQuery(GET_PROJECT);
+  const {data,loading, error} = useQuery(GET_PROJECT);
 
-  return data;
+  return {data,loading, error};
 }

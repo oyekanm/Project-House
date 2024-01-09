@@ -24,7 +24,7 @@ function Category({ Data,filterBtn }) {
         onClick={() => filterBtn(category)}
         type="button"
         key={index}
-        className="filter-btn"
+        className="filter-btn !ml-4 !p-4"
         >
         {category}
         </button>

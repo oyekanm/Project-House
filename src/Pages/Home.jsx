@@ -4,15 +4,21 @@ import Data from "../Data";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
+import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import GetProject from "../libs/Queries/GetProject";
+import GetLanguage from "../libs/Queries/GetLanguage";
 
 const languages = Data.map((item) => item.language);
 
 function Home() {
   const projects = GetProject()
+  const {data:languages, loading} = GetLanguage()
+  const lang = languages?.getAllLanguage
   const data = projects?.data?.getAllProject
   const [project, setProject] = useState([]);
+
+  // console.log(lang)
 
   useEffect(() => {
     AOS.init();
@@ -22,17 +28,17 @@ function Home() {
     }
   }, [data]);
   // const [project, setProject] = useState(Data.slice(17, 22));
-  const [language] = useState(languages);
-  const [newSet, setNewSet] = useState([]);
+  // const [language] = useState(languages);
+  // const [newSet, setNewSet] = useState([]);
 
-  useEffect(() => {
-    const spreadlang = [];
-    for (let i = 0; i < language.length; i++) {
-      spreadlang.push(...language[i]);
-    }
-    const spread = [...new Set(spreadlang), "github", "git"];
-    setNewSet(spread);
-  }, [language]);
+  // useEffect(() => {
+  //   const spreadlang = [];
+  //   for (let i = 0; i < language.length; i++) {
+  //     spreadlang.push(...language[i]);
+  //   }
+  //   const spread = [...new Set(spreadlang), "github", "git"];
+  //   setNewSet(spread);
+  // }, [language]);
 
   useEffect(() => {
     AOS.init();
@@ -105,8 +111,9 @@ function Home() {
       </div>
 
       <p className="Projects__title">projects</p>
-      <div className="Projects">
-      {project && project.map((project) => {
+      {projects.loading && <Loader2 class="h-[4rem] w-[4rem] animate-spin mx-auto" />}
+      {project && <div className="Projects">
+      { project.map((project) => {
           const { _id, author, image, name, language, url, github } = project;
           return (
             <div
@@ -174,7 +181,7 @@ function Home() {
         <Link to="/projects" className="Projects__link">
           see more...
         </Link>
-      </div>
+      </div>}
       <div className="Skills">
         <p className="Skills__title">Skills & Technoligies</p>
         <p className="Skills__text">
@@ -182,13 +189,14 @@ function Home() {
           learning to improve my Skills.
         </p>
         <div className="Skills__grid">
-          {newSet.map((skill, index) => {
+        {loading && <Loader2 class="h-[4rem] w-[4rem] animate-spin mx-auto" />}
+          {lang ? lang?.map((skill, index) => {
             return (
               <span key={index} className="Skills__tech">
-                {skill}
+                {skill.name}
               </span>
             );
-          })}
+          }):null}
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ query {
    }
 `
 export default function GetLanguage() {
-    const data = useQuery(GET_LANGUAGE)
+    const {data,loading} = useQuery(GET_LANGUAGE)
 
-    return data
+    return {data,loading}
 }

@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  APP
+  NOAPP
+}
+
+model User {
+  id       String  @id @default(cuid())
+  name     String
+  password String
+  email    String  @unique
+  author   Author? @relation(fields: [authorId], references: [id])
+  authorId String?
+}
+
+model Project {
+  id          String       @id @default(cuid())
+  name        String
+  description String
+  url         String
+  github      String
+  category    Category     @relation(fields: [categoryId], references: [id])
+  status      Status       @default(NOAPP)
+  categoryId  String
+  stacks      Stacks[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  Application Application?
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Project   Project[]
+}
+
+model Stacks {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Project   Project? @relation(fields: [projectId], references: [id])
+  projectId String?
+}
+
+model Image {
+  id  String @id @default(cuid())
+  url String @unique
+  key String @unique
+
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  Application   Application? @relation(fields: [applicationId], references: [id])
+  applicationId String?
+  Author        Author[]
+}
+
+model Video {
+  id  String @id @default(cuid())
+  url String @unique
+  key String @unique
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Application Application[]
+}
+
+model Application {
+  id        String   @id @default(cuid())
+  url       String
+  image     Image[]
+  video     Video?   @relation(fields: [videoId], references: [id])
+  videoId   String
+  Project   Project? @relation(fields: [projectId], references: [id])
+  projectId String?  @unique
+}
+
+model Author {
+  id             String  @id @default(cuid())
+  bio            String?
+  profilePicture Image?  @relation(fields: [imageId], references: [id])
+  posts          Post[]
+  User           User[]
+  imageId        String?
+}
+
+model Post {
+  id            String       @id @default(cuid())
+  title         String
+  content       String
+  publishedDate DateTime     @default(now())
+  authorId      String
+  categoryId    String
+  featuredImage String?
+  status        PostStatus   @default(DRAFT)
+  author        Author       @relation(fields: [authorId], references: [id])
+  category      PostCategory @relation(fields: [categoryId], references: [id])
+  comments      Comment[]
+  tags          PostTags[]
+}
+
+model Comment {
+  id            String        @id @default(cuid())
+  postId        String
+  authorName    String
+  authorEmail   String
+  content       String
+  publishedDate DateTime      @default(now())
+  status        CommentStatus @default(PENDING)
+  post          Post          @relation(fields: [postId], references: [id])
+}
+
+model PostCategory {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  posts       Post[]
+}
+
+model Tag {
+  id    String     @id @default(cuid())
+  name  String     @unique
+  posts PostTags[]
+}
+
+model PostTags {
+  postId String
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id])
+  tag    Tag    @relation(fields: [tagId], references: [id])
+
+  @@id([postId, tagId])
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}

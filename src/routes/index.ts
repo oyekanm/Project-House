@@ -9,7 +9,14 @@ const defaultInfo = {
 import * as HomeRoute from "@/app/page.info";
 import * as BlogRoute from "@/app/blog/page.info";
 import * as DashboardRoute from "@/app/dashboard/page.info";
+import * as DashboardBlogRoute from "@/app/dashboard/blog/page.info";
+import * as DashboardBlogCreateRoute from "@/app/dashboard/blog/create/page.info";
+import * as DashboardBlogEditRoute from "@/app/dashboard/blog/edit/page.info";
+import * as DashboardLanguageRoute from "@/app/dashboard/language/page.info";
 import * as DashboardProjectsRoute from "@/app/dashboard/projects/page.info";
+import * as DashboardProjectsAddnewRoute from "@/app/dashboard/projects/add-new/page.info";
+import * as DashboardProjectsEditRoute from "@/app/dashboard/projects/edit/page.info";
+import * as DashboardStacksRoute from "@/app/dashboard/stacks/page.info";
 import * as ProjectsRoute from "@/app/projects/page.info";
 
 export const Home = makeRoute(
@@ -33,11 +40,60 @@ export const Dashboard = makeRoute(
     ...DashboardRoute.Route
   }
 );
+export const DashboardBlog = makeRoute(
+  "/dashboard/blog",
+  {
+    ...defaultInfo,
+    ...DashboardBlogRoute.Route
+  }
+);
+export const DashboardBlogCreate = makeRoute(
+  "/dashboard/blog/create",
+  {
+    ...defaultInfo,
+    ...DashboardBlogCreateRoute.Route
+  }
+);
+export const DashboardBlogEdit = makeRoute(
+  "/dashboard/blog/edit",
+  {
+    ...defaultInfo,
+    ...DashboardBlogEditRoute.Route
+  }
+);
+export const DashboardLanguage = makeRoute(
+  "/dashboard/language",
+  {
+    ...defaultInfo,
+    ...DashboardLanguageRoute.Route
+  }
+);
 export const DashboardProjects = makeRoute(
   "/dashboard/projects",
   {
     ...defaultInfo,
     ...DashboardProjectsRoute.Route
+  }
+);
+export const DashboardProjectsAddnew = makeRoute(
+  "/dashboard/projects/add-new",
+  {
+    ...defaultInfo,
+    ...DashboardProjectsAddnewRoute.Route
+  }
+);
+export const DashboardProjectsEdit = makeRoute(
+  "/dashboard/projects/edit",
+  {
+    ...defaultInfo,
+    ...DashboardProjectsEditRoute.Route
+  }
+);
+export const DashboardStacks = makeRoute(
+  "/dashboard/stacks",
+  {
+    ...defaultInfo,
+    ...DashboardStacksRoute.Route
   }
 );
 export const Projects = makeRoute(

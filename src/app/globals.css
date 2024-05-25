@@ -163,3 +163,23 @@
     bottom: -0px;
     backdrop-filter: blur(5px);
   }
+  .Project__modal {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    transition: all 0.5s;
+  }
+  .Project__summary:hover .Project__modal {
+    top: 0;
+  }
+
+  .Dashboard__link{
+    @apply text-slate-700 font-bold text-[2rem]
+  }

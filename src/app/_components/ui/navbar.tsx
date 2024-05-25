@@ -1,6 +1,6 @@
 "use client"
 
-import { Dashboard, Home, Projects } from "@/routes";
+import { Blog, Dashboard, Home, Projects } from "@/routes";
 import React, { useEffect, useState } from "react";
 
 
@@ -10,7 +10,7 @@ function Navbar() {
   const navigate:any = ""
   const user:any = "useQuery(GET_User,{variables: { key:session },})"
 
-  const link = "text-[4rem] font-semibold text-slate-800 "
+  const link = "text-[4rem] font-semibold text-slate-800 text-center "
  
 
   return (
@@ -27,7 +27,7 @@ function Navbar() {
         <div className="Nav__button"></div>
       </div>
       <div className={show ? "navbar activ" : "navbar"}>
-        <ul className="grid gap-12 items-center justify-center">
+        <ul className="grid gap-12 items-center justify-center text-center">
           <li className="Nav__item" onClick={() => setShow(false)}>
             <Home.Link className={link}>
               Oyekanmi
@@ -37,6 +37,11 @@ function Navbar() {
             <Projects.Link  className={link}>
               Projects
             </Projects.Link>
+          </li>
+          <li className="Nav__item" onClick={() => setShow(false)}>
+            <Blog.Link  className={link}>
+              Blog
+            </Blog.Link>
           </li>
          {user?.data?.getUser._id && <li className="Nav__item" onClick={() => setShow(false)}>
             <Dashboard.Link className={link}>

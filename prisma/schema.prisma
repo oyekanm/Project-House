@@ -34,6 +34,7 @@ model Project {
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   Application Application?
+  features    String[] 
 }
 
 model Category {
@@ -77,10 +78,10 @@ model Video {
 
 model Application {
   id        String   @id @default(cuid())
-  url       String
+  url       String?
   image     Image[]
   video     Video?   @relation(fields: [videoId], references: [id])
-  videoId   String
+  videoId   String?
   Project   Project? @relation(fields: [projectId], references: [id])
   projectId String?  @unique
 }
@@ -107,6 +108,7 @@ model Post {
   category      PostCategory @relation(fields: [categoryId], references: [id])
   comments      Comment[]
   tags          PostTags[]
+  views         Int          @default(0)
 }
 
 model Comment {

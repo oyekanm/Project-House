@@ -10,7 +10,6 @@ export const createCategory = async(category: z.infer<typeof projectCategorySche
 
     const cate = result.data!
 
-
     if(result.success){
         try {
             // check db for incoming product details
@@ -40,4 +39,75 @@ export const createCategory = async(category: z.infer<typeof projectCategorySche
     }
     
     
+}
+
+export const updateCategory = async(category: z.infer<typeof projectCategorySchema>, id:string)=>{
+  const result = projectCategorySchema.safeParse(category)
+
+  const cate = result.data!
+
+
+  if(result.success){
+      try {
+          // check db for incoming product details
+          const unique = await db.category.findFirst({
+            where: {
+              id,
+            },
+          });
+      
+          if (!unique) {
+            return {
+              error: `unable to update a category that doesn't exist`,
+            };
+          }
+      
+          // create products
+          const updatedProduct = await db.category.update({
+            where:{id},
+            data: cate ,
+          });
+          return { data: updatedProduct };
+        } catch (error) {
+          console.log("error prisma",error);
+
+        }
+  }else{
+      return{error:result.error.format()}
+  }
+  
+  
+}
+
+
+export const deleteCategory = async(id:string)=>{
+
+
+      try {
+          // check db for incoming product details
+          const unique = await db.category.findFirst({
+            where: {
+              id,
+            },
+          });
+      
+          if (!unique) {
+            return {
+              error: `unable to delete a category that doesn't exist`,
+            };
+          }
+      
+          // create products
+          const newProduct = await db.category.delete({
+            where:{
+              id,
+            }
+          });
+          return { data: newProduct };
+        } catch (error) {
+          console.log("error prisma",error);
+
+        }
+  
+  
 }

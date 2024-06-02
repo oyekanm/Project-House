@@ -14,12 +14,11 @@ type Props = {
     setOpen: any,
 }
 
-export default function UploadImageComp({ restName, fileUpload,  setOpen }: Props) {
-    const [files, setFiles] = useState(null)
+export default function UploadImageComp({ restName, fileUpload, setOpen }: Props) {
+    const [files, setFiles] = useState([])
     const [progress, setProgress] = useState(0)
     const [uploading, setUploading] = useState(false)
     const { getRootProps, getInputProps } = useDropzone({
-        multiple: false,
         // accept: 'image/*',
         onDrop: (acceptedFiles: any) => {
             // console.log(acceptedFiles)
@@ -30,12 +29,12 @@ export default function UploadImageComp({ restName, fileUpload,  setOpen }: Prop
 
 
 
-    const uploadToFirebase = async (file: any, restrantName?: string, onProgress?: any) => {
+    const uploadToFirebase = async (file: any, onProgress?: any) => {
         const imageArray = file.name.split(".")
         imageArray[0] += Date.now()
         const fname = imageArray.join(".")
         // console.log( fname)
-        const imageRef = ref(storage, `resturant/${restrantName}/menu/${fname}`);
+        const imageRef = ref(storage, `app/images/${fname}`);
 
         const uploadTask = uploadBytesResumable(imageRef, file);
 
@@ -69,22 +68,29 @@ export default function UploadImageComp({ restName, fileUpload,  setOpen }: Prop
     const upload = async () => {
         if (!files) return;
         setUploading(true)
+        let newFiles = []
+        for (let i = 0; i < files?.length; i++) {
+            let imageFile = files[i];
 
-        const newFile:any = await uploadToFirebase(files![0], restName,
-            (v: any) =>
-                setProgress(v)
-        )
-        // console.log(newFile)
-        const updatedImgFile = {
-            url: newFile?.downloadUrl,
-            key: newFile?.metadata?.fullPath,
+            const uploadRes = await uploadToFirebase(imageFile,
+                (v: any) =>
+                    setProgress(v)
+            )
+            newFiles.push(uploadRes)
+
+            // console.log(uploadRes)
         }
+        const updatedImgFile = newFiles.map((r: any) => {
+            return {
+                // name: r.name,
+                url: r.downloadUrl,
+                key: r.metadata?.fullPath,
+            }
+        })
 
-        // console.log(updatedImgFile)
-        
         setUploading(false)
-        setFiles(null)
-         await fileUpload(updatedImgFile)
+        setFiles([])
+        await fileUpload(updatedImgFile)
         // setImage(updatedImgFile)
         setOpen(false)
     }
@@ -97,25 +103,14 @@ export default function UploadImageComp({ restName, fileUpload,  setOpen }: Prop
             <div className='grid gap-4 cursor-pointer'>
                 <div {...getRootProps({ className: 'dropzone grid' })}>
                     <input {...getInputProps()} />
-                    <CloudUpload className='w-12 h-12 mx-auto' />
-                    <p className='text-[1.4rem] font-medium text-blue-500'>Drag 'n' drop your image here</p>
-                    {/* {console.log(files)} */}
-                    {!files && <Button>Choose File</Button>}
-                    {/* {files.length > 0 && <Button onClick={upload}>{progress > 0
-                    ? `${progress}%` : `Upload ${files.length} file${files.length > 1 ? "s" : ""}`
-                } </Button>} */}
+                    <CloudUpload className='w-12 h-12 mx-auto text-slate-700' />
+                    <p className='text-[1.4rem] font-medium text-slate-700'>Drag 'n' drop your image here</p>
+                    {!files && <Button type='button'>Choose Files</Button>}
                 </div>
-                {files && <Button onClick={upload}>{uploading
-                    ? `${progress}%` : `Upload file`
+                {files.length>0 && <Button onClick={upload}>{uploading
+                    ? `${progress.toFixed(0)}%` : `Upload file`
                 } </Button>}
             </div>
-            {/* {uploading &&
-                <Button
-                    variant={'link'}
-                    className='text-[1.2rem] font-medium text-red-500'>
-                    Cancel
-                </Button>
-            } */}
         </div>
     )
 }

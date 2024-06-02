@@ -4,18 +4,18 @@ import { db } from "@/lib/config/db";
 
 
 
-export async function createImage(image:{
+export async function CreateImage(image:{
   url: string;
   key: string;
-}) {
+}[]) {
   
 
   try {
     // checking product availabilty
     const unique = await db.image.findFirst({
       where: {
-        url: image.url,
-        key:image.key,
+        url: image[0].url,
+        key:image[0].key,
 
       },
     });
@@ -29,8 +29,11 @@ export async function createImage(image:{
     }
 
   
-    const createdImage = await db.image.create({
-      data: image,
+    const createdImage = await db.image.createMany({
+      data: image?.map((inp) => ({
+        key: inp.key,
+        url: inp.url,
+      })),
     });
 
     return { data: createdImage };
@@ -38,7 +41,7 @@ export async function createImage(image:{
     console.log(error);
   }
 }
-export async function createVideo(video:{
+export async function CreateVideo(video:{
   url: string;
   key: string;
 }) {

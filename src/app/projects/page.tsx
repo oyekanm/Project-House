@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectCard from '../_components/ui/projectCard'
+import { FetchData } from '@/lib/fetchers/getDatas'
 
 const projects = [
   {
@@ -40,6 +41,8 @@ const projects = [
 
 
 export default function page() {
+  const { data } = FetchData("/api/category")
+  const { data:Project } = FetchData("/api/category")
   return (
     <div className="Container">
       <section className='sm:grid grid-cols-3 gap-8'>

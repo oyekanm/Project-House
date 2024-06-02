@@ -25,8 +25,8 @@ model Project {
   id          String       @id @default(cuid())
   name        String
   description String
-  url         String
-  github      String
+  url         String?
+  github      String?
   category    Category     @relation(fields: [categoryId], references: [id])
   status      Status       @default(NOAPP)
   categoryId  String
@@ -63,7 +63,7 @@ model Image {
   updatedAt     DateTime     @updatedAt
   Application   Application? @relation(fields: [applicationId], references: [id])
   applicationId String?
-  Author        Author[]
+  // Author        Author[]
 }
 
 model Video {
@@ -89,10 +89,10 @@ model Application {
 model Author {
   id             String  @id @default(cuid())
   bio            String?
-  profilePicture Image?  @relation(fields: [imageId], references: [id])
+  // profilePicture Image?  @relation(fields: [imageId], references: [id])
   posts          Post[]
   User           User[]
-  imageId        String?
+  // imageId        String?
 }
 
 model Post {
@@ -103,7 +103,7 @@ model Post {
   authorId      String
   categoryId    String
   featuredImage String?
-  status        PostStatus   @default(DRAFT)
+  status        PostStatus   @default(PUBLISHED)
   author        Author       @relation(fields: [authorId], references: [id])
   category      PostCategory @relation(fields: [categoryId], references: [id])
   comments      Comment[]

@@ -17,7 +17,7 @@ type Props = {
 export default function ProjectCard({ item }: Props) {
   const { Github, author, category, description, id, language, name, url,features } = item
   return (
-    <div className='grid relative Project__summary overflow-hidden rounded-[10px] h-[250px] shadow-[0_0_10px_rgba(99,99,99,.5)] p-4 px-8'>
+    <div className='grid relative bg-[rgba(0,0,0,1)] Project__summary overflow-hidden rounded-[10px] h-[250px] shadow-[0_0_10px_rgba(99,99,99,.5)] p-4 px-8'>
       <div>
         <p className='text-[1.8rem] font-semibold uppercase'>{name}</p>
         <p className='text-[1.4rem] font-medium'>{description.slice(0,250)}</p>

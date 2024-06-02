@@ -1,11 +1,13 @@
 import React from "react";
 import { Loader2 } from "lucide-react";
 import MotionSlot from "./_components/reuseable/motionSlot";
+import { FetchData } from "@/lib/fetchers/getDatas";
 
 
 export default function Home() {
   const text = "text-[2rem] font-medium leading-[30px]"
   const title = "text-[3rem] font-semibold uppercase "
+  const { data: Stacks, error, isLoading } = FetchData("/api/stack")
   return (
     <div className="Container">
       <section className="mb-8">

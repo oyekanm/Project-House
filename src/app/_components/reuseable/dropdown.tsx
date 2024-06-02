@@ -25,8 +25,9 @@ import {
   //  console.log(data?.filter(d=> d.id === defaultValue))
     return (
       <Select onValueChange={(e)=>setFunction(e)} value={defaultValue}>
-        <SelectTrigger className="w-full my-4 p-8 rounded-[5px] focus-visible:outline-none  bg-gray-300 capitalize text-[2rem] font-semibold">
+        <SelectTrigger className="w-full my-4 p-8 rounded-[5px] focus-visible:outline-none  bg-gray-300 capitalize text-[2rem] text-slate-700 font-semibold">
           <SelectValue  placeholder={btnTitle} />
+          {/* <div className='text-[1.8rem] font-bold text-slate-700'>{btnTitle}</div> */}
         </SelectTrigger>
         <SelectContent >
           <SelectGroup>

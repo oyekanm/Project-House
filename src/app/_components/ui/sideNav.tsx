@@ -3,11 +3,8 @@ import React from 'react'
 
 export default function SideNav() {
   return (
-    <aside className='bg-white min-h-screen h-full  w-full'>
-      <div className='grid gap-16 items-center justify-center'>
-        <div>
-          <Home.Link className='text-[2.5rem] font-bold text-slate-700'>O|B</Home.Link>
-        </div>
+    <aside className='bg-white min-h-screen h-full  w-full p-4'>
+      
 
       <ul className="grid gap-8">
         <li className="Dashboard__item">
@@ -22,7 +19,7 @@ export default function SideNav() {
         </li>
         <li className="Dashboard__item">
           <DashboardLanguage.Link  className="Dashboard__link">
-            Language
+            Category
           </DashboardLanguage.Link>
         </li>
         <li className="Dashboard__item">
@@ -37,7 +34,6 @@ export default function SideNav() {
           </span>
         </li>
       </ul>
-      </div>
     </aside>
   )
 }

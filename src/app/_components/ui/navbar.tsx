@@ -43,6 +43,11 @@ function Navbar() {
               Blog
             </Blog.Link>
           </li>
+          <li className="Nav__item" onClick={() => setShow(false)}>
+          <Dashboard.Link className={link}>
+             Dashboard
+            </Dashboard.Link>
+          </li>
          {user?.data?.getUser._id && <li className="Nav__item" onClick={() => setShow(false)}>
             <Dashboard.Link className={link}>
              Dashboard

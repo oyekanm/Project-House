@@ -35,7 +35,7 @@ import { createApplication } from '@/actions/projectActions'
 
 type Props = {
     mutate: any;
-    data?: z.infer<typeof projectSchema>;
+    data?:any;
     editing?: boolean
 }
 
@@ -77,7 +77,7 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
     useEffect(() => {
         if (data) {
             const { categoryId, description, features, github, name, stacks, status, url, application } = data
-            const filteredStacks = stacks.map(s => s.id)
+            const filteredStacks = stacks.map((s:any) => s.id)
             form.setValue('url', url)
             form.setValue('status', status)
             form.setValue('name', name)
@@ -217,6 +217,8 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
         // data successfully recieved
         if (response?.data) {
             const data = response.data
+            console.log(data,"data")
+            form.setValue("application.image", data)
             Toast({ title: "Operation success", description: `Image created Successfully`, className: "bg-green-500" })
         }
     }

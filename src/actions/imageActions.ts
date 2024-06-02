@@ -29,7 +29,7 @@ export async function CreateImage(image:{
     }
 
   
-    const createdImage = await db.image.createMany({
+    const createdImage = await db.image.createManyAndReturn({
       data: image?.map((inp) => ({
         key: inp.key,
         url: inp.url,

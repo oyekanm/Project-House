@@ -105,15 +105,6 @@ export const updateProject = async (
             connect: stacks.map((stack) => ({ id: stack })),
           },
           status,
-          Application: {
-            create: {
-              url: application!?.url,
-              videoId: application?.videoId,
-              image: {
-                connect: application!?.image.map((app) => ({ id: app })),
-              },
-            },
-          },
           features,
         },
       });

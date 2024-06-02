@@ -105,7 +105,7 @@ export default function UploadImageComp({ restName, fileUpload, setOpen }: Props
                     <input {...getInputProps()} />
                     <CloudUpload className='w-12 h-12 mx-auto text-slate-700' />
                     <p className='text-[1.4rem] font-medium text-slate-700'>Drag & drop your image here</p>
-                    {!files && <Button type='button'>Choose Files</Button>}
+                    {files.length ===0 && <Button type='button'>Choose Files</Button>}
                 </div>
                 {files.length>0 && <Button onClick={upload}>{uploading
                     ? `${progress.toFixed(0)}%` : `Upload file`

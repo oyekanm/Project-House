@@ -1,6 +1,9 @@
+"use client"
+
 import React from 'react'
 import ProjectCard from '../_components/ui/projectCard'
 import { FetchData } from '@/lib/fetchers/getDatas'
+import { Loader2 } from 'lucide-react'
 
 const projects = [
   {
@@ -42,12 +45,13 @@ const projects = [
 
 export default function page() {
   const { data } = FetchData("/api/category")
-  const { data:Project } = FetchData("/api/category")
+  const { data:Project, isLoading } = FetchData("/api/products")
   return (
-    <div className="Container">
-      <section className='sm:grid grid-cols-3 gap-8'>
+    <div className="Container mt-8">
+      {isLoading && <Loader2 className="h-[4rem] w-[4rem]  animate-spin mx-auto" />}
+      <section className='grid sm:grid-cols-2 md:grid-cols-3 gap-8'>
         {
-          projects.map(project => {
+          Project?.map((project:any) => {
             return <ProjectCard item={project} />
           })
         }

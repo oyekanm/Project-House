@@ -24,7 +24,13 @@ export async function GET(request: Request) {
     }
   } else {
     try {
-      const projects = await db.project.findMany();
+      const projects = await db.project.findMany({
+        include: {
+          Application: true,
+          category: true,
+          stacks: true,
+        },
+      });
       return NextResponse.json(projects);
     } catch (error) {
       console.log(error);

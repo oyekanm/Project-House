@@ -1,21 +1,12 @@
+import { Project } from '@prisma/client'
 import React from 'react'
 
 type Props = {
-  item: {
-    id: number;
-    author: string;
-    description: string;
-    name: string;
-    language: string[];
-    category: string;
-    url: string;
-    Github: string;
-    features:string[]
-  }
+  item: Project
 }
 
 export default function ProjectCard({ item }: Props) {
-  const { Github, author, category, description, id, language, name, url,features } = item
+  const {  description, id, name, url,features,categoryId,github,status, stacks } = item
   return (
     <div className='grid relative bg-[rgba(0,0,0,1)] Project__summary overflow-hidden rounded-[10px] h-[250px] shadow-[0_0_10px_rgba(99,99,99,.5)] p-4 px-8'>
       <div>
@@ -23,11 +14,11 @@ export default function ProjectCard({ item }: Props) {
         <p className='text-[1.4rem] font-medium'>{description.slice(0,250)}</p>
       </div>
       <div className="flex flex-wrap gap-6 items-center mt-auto">
-        {language &&
-          language.map((skill, index) => {
+        {stacks &&
+          stacks.map((skill:any) => {
             return (
-              <span key={index} className="text-white text-[1.2rem] font-semibold uppercase p-1 px-4 rounded-[5px] shadow-[0_0_5px_rgba(225,225,225,.8)]">
-                {skill}
+              <span key={skill.id} className="text-white text-[1.2rem] font-semibold uppercase p-1 px-4 rounded-[5px] shadow-[0_0_5px_rgba(225,225,225,.8)]">
+                {skill.name}
               </span>
             );
           })}
@@ -38,13 +29,13 @@ export default function ProjectCard({ item }: Props) {
           <div className='grid grid-cols-2 gap-2 flex-wrap mt-3'>
           {
             features.map(feature=>{
-              return <span className='text-[1.2rem] font-semibold' key={feature}>{feature}</span>
+              return <span className='text-[1.3rem] font-medium' key={feature}>{feature}</span>
             })            
           }
           </div>
         </div>
        <div className='mt-auto grid grid-cols-2 justify-center items-center'>
-       <a href={url} target="_blank" rel="noreferrer">
+       <a href={status === "NOAPP"? url : `/projects/${id}`} target={status === "NOAPP"?"_blank":"_self"} rel="noreferrer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -57,7 +48,7 @@ export default function ProjectCard({ item }: Props) {
             <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
           </svg>
         </a>
-        <a href={Github} target="_blank" rel="noreferrer">
+        <a href={github} target="_blank" rel="noreferrer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

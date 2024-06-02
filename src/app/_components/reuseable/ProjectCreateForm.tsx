@@ -234,6 +234,7 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
         // data successfully recieved
         if (response?.data) {
             const data = response.data
+            form.setValue("application.videoId", data.id)
             Toast({ title: "Operation success", description: `Image created Successfully`, className: "bg-green-500" })
         }
     }

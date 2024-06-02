@@ -1,5 +1,4 @@
-import { Dashboard, DashboardLanguage, DashboardProjects, DashboardStacks, Home } from '@/routes'
-import React from 'react'
+import { Dashboard, DashboardLanguage, DashboardProjects, DashboardStacks } from '@/routes'
 
 export default function SideNav() {
   return (

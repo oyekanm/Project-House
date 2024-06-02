@@ -2,7 +2,7 @@ import { Project } from '@prisma/client'
 import React from 'react'
 
 type Props = {
-  item: Project
+  item: any
 }
 
 export default function ProjectCard({ item }: Props) {
@@ -28,7 +28,7 @@ export default function ProjectCard({ item }: Props) {
           <p className='capitalize text-[1.8rem] font-medium'>features</p>
           <div className='grid grid-cols-2 gap-2 flex-wrap mt-3'>
           {
-            features.map(feature=>{
+            features.map((feature:any)=>{
               return <span className='text-[1.3rem] font-medium' key={feature}>{feature}</span>
             })            
           }

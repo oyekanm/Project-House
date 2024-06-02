@@ -1,14 +1,12 @@
 "use client"
 
-import { Blog, Dashboard, Home, Projects } from "@/routes";
-import React, { useEffect, useState } from "react";
+import { Dashboard, Home, Projects } from "@/routes";
+import { useState } from "react";
 
 
 function Navbar() {
   const [show, setShow] = useState(false);
-  const session = sessionStorage.getItem("key")
-  const navigate:any = ""
-  const user:any = "useQuery(GET_User,{variables: { key:session },})"
+  const user:any = "ksjsjs"
 
   const link = "text-[4rem] font-semibold text-slate-800 text-center "
  
@@ -44,7 +42,7 @@ function Navbar() {
             </Blog.Link>
           </li> */}
           
-         {user?.data?.getUser._id && <li className="Nav__item" onClick={() => setShow(false)}>
+         {!user && <li className="Nav__item" onClick={() => setShow(false)}>
             <Dashboard.Link className={link}>
              Dashboard
             </Dashboard.Link>

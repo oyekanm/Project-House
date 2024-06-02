@@ -9,7 +9,6 @@
     "lint": "next lint",
     "dr:build": "npx declarative-routing build",
     "dr:build:watch": "npx declarative-routing build --watch"
-    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",

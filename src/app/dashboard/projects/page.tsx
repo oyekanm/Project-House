@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export default function page() {
+export default function ProjectDashboard() {
   const { data } = FetchData("/api/products")
   const route = useRouter()
 

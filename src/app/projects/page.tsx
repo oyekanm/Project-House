@@ -43,7 +43,7 @@ const projects = [
 ]
 
 
-export default function page() {
+export default function Projects() {
   const { data } = FetchData("/api/category")
   const { data:Project, isLoading } = FetchData("/api/products")
   return (
@@ -52,7 +52,7 @@ export default function page() {
       <section className='grid sm:grid-cols-2 md:grid-cols-3 gap-8'>
         {
           Project?.map((project:any) => {
-            return <ProjectCard item={project} />
+            return <ProjectCard key={project.id} item={project} />
           })
         }
       </section>

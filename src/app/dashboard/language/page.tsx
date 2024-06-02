@@ -21,7 +21,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export default function page() {
+export default function Language() {
   const { data } = FetchData("/api/category")
   const [editing, setEditing] = useState(false)
   const [cateId, setCateId] = useState("")

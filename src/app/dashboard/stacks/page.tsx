@@ -21,7 +21,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import DataTable from '@/app/_components/reuseable/dataTable'
 import { FetchData } from '@/lib/fetchers/getDatas'
 
-export default function page() {
+export default function Stacks() {
   const { data } = FetchData("/api/stack")
   const [editing, setEditing] = useState(false)
   const [stackId, setStackId] = useState("")

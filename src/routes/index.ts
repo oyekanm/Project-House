@@ -7,21 +7,18 @@ const defaultInfo = {
 };
 
 import * as HomeRoute from "@/app/page.info";
+import * as ApiapplicationRoute from "@/app/api/application/route.info";
 import * as ApiCategoryRoute from "@/app/api/category/route.info";
 import * as ApiProductsRoute from "@/app/api/products/route.info";
 import * as ApiStackRoute from "@/app/api/stack/route.info";
-import * as BlogRoute from "@/app/blog/page.info";
 import * as DashboardRoute from "@/app/dashboard/page.info";
-import * as DashboardBlogRoute from "@/app/dashboard/blog/page.info";
-import * as DashboardBlogCategoryRoute from "@/app/dashboard/blog/category/page.info";
-import * as DashboardBlogCreateRoute from "@/app/dashboard/blog/create/page.info";
-import * as DashboardBlogEditRoute from "@/app/dashboard/blog/edit/page.info";
 import * as DashboardLanguageRoute from "@/app/dashboard/language/page.info";
 import * as DashboardProjectsRoute from "@/app/dashboard/projects/page.info";
 import * as DashboardProjectsAddnewRoute from "@/app/dashboard/projects/add-new/page.info";
 import * as DashboardprojectseditidRoute from "@/app/dashboard/projects/edit/[id]/page.info";
 import * as DashboardStacksRoute from "@/app/dashboard/stacks/page.info";
 import * as ProjectsRoute from "@/app/projects/page.info";
+import * as ProjectsidRoute from "@/app/projects/[id]/page.info";
 
 export const Home = makeRoute(
   "/",
@@ -30,46 +27,11 @@ export const Home = makeRoute(
     ...HomeRoute.Route
   }
 );
-export const Blog = makeRoute(
-  "/blog",
-  {
-    ...defaultInfo,
-    ...BlogRoute.Route
-  }
-);
 export const Dashboard = makeRoute(
   "/dashboard",
   {
     ...defaultInfo,
     ...DashboardRoute.Route
-  }
-);
-export const DashboardBlog = makeRoute(
-  "/dashboard/blog",
-  {
-    ...defaultInfo,
-    ...DashboardBlogRoute.Route
-  }
-);
-export const DashboardBlogCategory = makeRoute(
-  "/dashboard/blog/category",
-  {
-    ...defaultInfo,
-    ...DashboardBlogCategoryRoute.Route
-  }
-);
-export const DashboardBlogCreate = makeRoute(
-  "/dashboard/blog/create",
-  {
-    ...defaultInfo,
-    ...DashboardBlogCreateRoute.Route
-  }
-);
-export const DashboardBlogEdit = makeRoute(
-  "/dashboard/blog/edit",
-  {
-    ...defaultInfo,
-    ...DashboardBlogEditRoute.Route
   }
 );
 export const DashboardLanguage = makeRoute(
@@ -114,7 +76,22 @@ export const Projects = makeRoute(
     ...ProjectsRoute.Route
   }
 );
+export const Projectsid = makeRoute(
+  "/projects/[id]",
+  {
+    ...defaultInfo,
+    ...ProjectsidRoute.Route
+  }
+);
 
+export const getApiapplication = makeGetRoute(
+  "/api/application",
+  {
+    ...defaultInfo,
+    ...ApiapplicationRoute.Route
+  },
+  ApiapplicationRoute.GET
+);
 export const getApiCategory = makeGetRoute(
   "/api/category",
   {
@@ -145,7 +122,7 @@ export const deleteApiProducts = makeDeleteRoute(
     ...defaultInfo,
     ...ApiProductsRoute.Route
   },
-  ApiProductsRoute.DELETE
+  
 );
 export const getApiStack = makeGetRoute(
   "/api/stack",

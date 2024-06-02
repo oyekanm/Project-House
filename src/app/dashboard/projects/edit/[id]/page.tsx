@@ -9,7 +9,7 @@ type Props = {
     params: { id: string }
 }
 
-export default function page({ params }: Props) {
+export default function EditProject({ params }: Props) {
     const { id } = params
     const { data } = FetchData(`/api/products?id=${id}`)
 

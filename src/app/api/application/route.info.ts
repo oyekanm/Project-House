@@ -1,8 +1,11 @@
 import { z } from "zod";
 
 export const Route = {
-  name: "DashboardBlog",
+  name: "Apiapplication",
   params: z.object({
   })
 };
 
+export const GET = {
+  result: z.object({}),
+};

@@ -18,7 +18,7 @@ type Application = {
     Project: { name: string, description: string, stacks: { id: string, name: string }[], features: string[] }
 }
 
-export default function page({ params }: Props) {
+export default function ProjectDetail({ params }: Props) {
     const { id } = params
     const { data, isLoading }: { data: Application, isLoading: boolean } = FetchData(`/api/application?id=${id}`)
 

@@ -36,18 +36,18 @@ export default function Home() {
           <p className={title}>about me</p>
           <div className="grid gap-8 mt-4 pl-4 w-[600px] max-w-full">
             <p className={text}>
-              I'm a Front-End Developer from Nigeria, I'm an Undergraduate of
+              I&apos;m a Front-End Developer from Nigeria, I&apos;m an Undergraduate of
               University of Lagos.
             </p>
             <p className={text}>I develop Mobile Applications and Websites to enhance your digital presence.</p>
             <p className={text}>I have two years experience using various front-end technologies,</p>
-            <p className={text}>and i write songs, i'm currently writing a diss track for the people who make me feel discomfort, wait for it</p>
+            <p className={text}>and i write songs, i&apos;m currently writing a diss track for the people who make me feel discomfort, wait for it</p>
           </div>
         </div>
       </section>
       <div className="my-16 ">
         <a href="mailto:enitanboluwatife5@gmail.com" className="text-[2.5rem] relative font-medium text-gray-400 work">
-          Let's work
+          Let&apos;s work
         </a>
       </div>
 
@@ -58,7 +58,7 @@ export default function Home() {
           <section className='grid sm:grid-cols-2 md:grid-cols-3 gap-8'>
             {
               Project?.slice(0, 5).map((project: any) => {
-                return <ProjectCard item={project} />
+                return <ProjectCard key={project.id} item={project} />
               })
             }
             {!ProjectLoading && <Projects.Link className={"text-[1.7rem] font-medium"}>

@@ -31,6 +31,7 @@ import UploadImage from './uploadImage'
 import UploadVideo from './uploadVideo'
 import { CreateImage, CreateVideo } from '@/actions/imageActions'
 import { createApplication } from '@/actions/projectActions'
+import { useRouter } from 'next/navigation'
 
 
 type Props = {
@@ -54,6 +55,8 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
     const [app, setApp] = useState(false)
     const labelClass = "font-semibold text-[2rem] text-slate-700"
     const inputClass = "resize-none border-2 p-4 rounded-[5px] text-[1.8rem] text-gray-700 !focus-visible:outline-none"
+    const route = useRouter()
+   
     // form initialization
     const form = useForm<z.infer<typeof projectSchema>>({
         resolver: zodResolver(projectSchema),
@@ -72,7 +75,6 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
 
     })
 
-    console.log(form.getValues())
 
     useEffect(() => {
         if (data) {
@@ -102,7 +104,6 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
         })
     }
 
-    console.log(form.getValues())
 
     const onChange = (bool: boolean) => {
         setApp(bool)
@@ -178,6 +179,8 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
                     setFeatures([])
                     setStacks([])
                     setCategoryId("")
+                    setApp(false)
+                    route.push(`/dashboard/projects`)
                     Toast({ title: "Operation success", description: `${response.data.name} was updated successfully!!`, className: "bg-green-500" })
                 }
             } else {
@@ -197,6 +200,7 @@ export default function ProjectCreateForm({ mutate, data, editing }: Props) {
                     setFeatures([])
                     setStacks([])
                     setCategoryId("")
+                    setApp(false)
                     Toast({ title: "Operation success", description: `${response.data.name} created successfully!!`, className: "bg-green-500" })
                 }
             }

@@ -32,6 +32,11 @@ export async function GET(request: Request) {
           category: true,
           stacks: true,
         },
+        orderBy:[
+          {
+            createdAt:"asc"
+          }
+        ]
       });
       return NextResponse.json(projects);
     } catch (error) {

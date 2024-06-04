@@ -5,12 +5,7 @@ import DataTable from '@/app/_components/reuseable/dataTable'
 import Toast from '@/app/_components/reuseable/toast'
 import { Button } from '@/components/ui/button'
 import { FetchData } from '@/lib/fetchers/getDatas'
-import { projectSchema } from '@/lib/schemas/projectSchema'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 export default function ProjectDashboard() {
   const { data } = FetchData("/api/products")

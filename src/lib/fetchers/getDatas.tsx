@@ -10,7 +10,7 @@ export const FetchData = (url: string) => {
         return resp
     }
 
-    const { data, error, isLoading } = useSWR(url, fetcher, { refreshInterval: 1000,  })
+    const { data, error, isLoading } = useSWR(url, fetcher, { refreshInterval: 500,  })
 
     return { data, error, isLoading }
 

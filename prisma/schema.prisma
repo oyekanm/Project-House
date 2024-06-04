@@ -50,8 +50,7 @@ model Stacks {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Project   Project? @relation(fields: [projectId], references: [id])
-  projectId String?
+  Project   Project[]
 }
 
 model Image {

@@ -79,10 +79,75 @@
     font-size: 62.5%;
     scroll-behavior: smooth;
   }
-  
+
+  @media only screen and (min-width: 2000px) {
+  html{
+    font-size: 75%;
+  }
+  .Container {
+        max-width: 200rem !important;
+    }
+}
+
+@media only screen and (min-width: 2300px) {
+  html{
+    font-size: 87.5%;
+  }
+}
+@media only screen and (min-width: 2700px) {
+  html{
+    font-size: 100%;
+  }
+}
+@media only screen and (min-width: 3700px) {
+  html{
+    font-size: 120%;
+  }
+}
   .Container {
     @apply container mx-auto px-8 sm:px-8 md:px-12;
   }
+
+  .filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px; /* This creates the pill shape */
+  background-color: #f0f2f5;
+  padding: 4px;
+  gap: 8px; /* Spacing between the buttons */
+  width: fit-content;
+  margin: 20px auto; /* Center the container */
+}
+
+.filter-button {
+  border: none;
+  background-color: transparent;
+  color: #6b7280;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 1.2rem 2rem;
+  cursor: pointer;
+  border-radius: 9999px; /* This creates the pill shape on the buttons */
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+/* Hover & Focus state */
+.filter-button:hover,
+.filter-button:focus {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  outline: none;
+}
+
+/* Active state for the selected button */
+.filter-button.active {
+  background-color: #ffffff; /* White background for the active button */
+  color: #4f46e5; /* A vibrant color to show it's active */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
 
   .work::after{
     background-color: gray;

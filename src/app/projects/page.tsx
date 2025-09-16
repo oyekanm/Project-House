@@ -94,7 +94,7 @@ export default function Projects() {
   const { data } = FetchData("/api/category");
   const { data: Project, isLoading } = FetchData("/api/products");
 
-  const filteredProject=Project.filter((pro:pro)=>{
+  const filteredProject=Project?.filter((pro:pro)=>{
     if(filter === "all"){
       return pro
     }

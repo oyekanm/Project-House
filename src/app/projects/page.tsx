@@ -82,7 +82,7 @@ interface pro {
     description: string;
     name: string;
     language: string[];
-    category: string;
+    category: { name:string};
     url: string;
     Github: string;
     features: string[];
@@ -99,10 +99,12 @@ export default function Projects() {
       return pro
     }
     if(filter === "web"){
-      return pro.status === "NOAPP"
+      // return pro.status === "NOAPP"
+      return pro.category.name !== "React native"
     }
     if(filter === "mobile app"){
-      return pro.status === "APP"
+      // return pro.status === "APP"
+      return pro.category.name === "React native"
     }
   })
 

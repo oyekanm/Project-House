@@ -36,12 +36,12 @@ export default function Home() {
           <p className={title}>about me</p>
           <div className="grid gap-8 mt-4 pl-4 w-[600px] max-w-full">
             <p className={text}>
-              I&apos;m a Front-End Developer from Nigeria, I&apos;m an Undergraduate of
+              I&apos;m a Front-End Engineer from Nigeria, I&apos;m an Graduate of
               University of Lagos.
             </p>
             <p className={text}>I develop Mobile Applications and Websites to enhance your digital presence.</p>
-            <p className={text}>I have two years experience using various front-end technologies,</p>
-            <p className={text}>and i write songs, i&apos;m currently writing a diss track for the people who make me feel discomfort, wait for it</p>
+            <p className={text}>I have three years+ experience using various front-end technologies,</p>
+            <p className={text}>and i write songs, i&apos;m currently writing a diss track for the people who make me feel discomfort, wait for it!!!</p>
           </div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default function Home() {
                 return <ProjectCard key={project.id} item={project} />
               })
             }
-            {!ProjectLoading && <Projects.Link className={"text-[1.7rem] font-medium"}>
+            {!ProjectLoading && <Projects.Link className={"text-[1.7rem] font-medium flex items-center justify-center"}>
               see more...
             </Projects.Link>}
           </section>

@@ -36,7 +36,7 @@ export default function Home() {
           <p className={title}>about me</p>
           <div className="grid gap-8 mt-4 pl-4 w-[600px] max-w-full">
             <p className={text}>
-              I&apos;m a Front-End Engineer from Nigeria, I&apos;m an Graduate of
+              I&apos;m a Front-End Engineer from Nigeria, I&apos;m a Graduate of
               University of Lagos.
             </p>
             <p className={text}>I develop Mobile Applications and Websites to enhance your digital presence.</p>
